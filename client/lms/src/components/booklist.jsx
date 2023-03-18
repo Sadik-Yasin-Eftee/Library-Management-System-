@@ -17,14 +17,19 @@ function Booklist(){
     },[]);
 
     const handleDelete = (id) => {
-        const url = "http://localhost:3001/booklist?${id}";
-        try{
-            axios.delete(url);
-            window.location.reload();
-        }catch(error){
-            console.log(error);
+        const url = `http://localhost:3001/booklist/${id}`;
+        const confirmationMessage = "Are you sure you want to delete this book?"
+        if (window.confirm(confirmationMessage)) {
+            axios.delete(url)
+                .then(() => {
+                    window.location.reload();
+                })
+                .catch((error) => {
+                    console.log(error);
+                });
+            }
         }
-    }
+    
     
     return(
         <div >
@@ -39,8 +44,8 @@ function Booklist(){
                     </tr>
                 </thead>
                 {booklist.map((book) => (
-                <tbody>
-                    <tr key={book.id}>
+                <tbody key={book.id}>
+                    <tr >
                         <td>
                             {book.id}
                         </td>
