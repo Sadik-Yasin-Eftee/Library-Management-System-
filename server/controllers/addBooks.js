@@ -3,8 +3,8 @@ const db = require("../database/database.js");
 const add = require("../models/addBook.js")
 
 const addBook = app.post("/addBooks",(req,res) => {
-    var name = req.body.name;
-    var author = req.body.author;
+    var name = req.body.bookName;
+    var author = req.body.authorName;
     var genre = req.body.genre;
     db.query(add.add,[name,author,genre],(error,data) => {
         if (error){

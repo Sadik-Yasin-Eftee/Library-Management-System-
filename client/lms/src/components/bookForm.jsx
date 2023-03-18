@@ -4,9 +4,8 @@ import { useState } from "react";
 function BookForm() {
     const [bookName,setBookName] = useState('');
     const [authorName,setAuthorName] = useState('');
-    const [genre,setGenre] = useState('');
-    // const [booklist,setBooklist] = useState([]);
-
+    const [genre,setGenre] = useState('Fiction');
+ 
     const submitForm = () => {
         console.log(bookName);
         console.log(authorName);
@@ -22,7 +21,7 @@ function BookForm() {
     return(
         <div>
             <h1>ADD A BOOK</h1>
-            <form action="">
+            <form onSubmit={submitForm}>
                 <label>Book Name: </label>
                 <input type="text" placeholder="Enter Book Name" value={bookName} onChange={(e) => setBookName(e.target.value)} />
                 <br />
@@ -33,9 +32,9 @@ function BookForm() {
                 <br />
                 <label htmlFor="">Genre: </label>
                 <select name="" id="" value={genre} onChange={(e) => setGenre(e.target.value)} >
-                    <option value="">Fiction</option>
-                    <option value="">Non Fiction</option>
-                    <option value="">Novel</option>
+                    <option value="Fiction">Fiction</option>
+                    <option value="Non-fiction">Non Fiction</option>
+                    <option value="Novel">Novel</option>
                 </select>
                 <br />
                 <br />
