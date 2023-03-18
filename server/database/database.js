@@ -19,7 +19,7 @@ createConnection.query(booklist.seeBookList, (error,res) => {
         return console.log(error);
     }
     return console.log(res);
-})
+});
 
-exports.connection;
+module.exports = createConnection;
 
