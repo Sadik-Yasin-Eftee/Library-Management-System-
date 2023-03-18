@@ -1,10 +1,12 @@
 import axios from "axios";
-import { useState } from "react";
+import React, { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 
 function BookForm() {
     const [bookName,setBookName] = useState('');
     const [authorName,setAuthorName] = useState('');
     const [genre,setGenre] = useState('Fiction');
+    const navigate = useNavigate();
  
     const submitForm = (event) => {
         event.preventDefault(); // prevent the form from reloading the page
@@ -23,10 +25,14 @@ function BookForm() {
         .catch(error => {
             console.log(error);
         });
+        navigate("/");
     }
 
     return(
         <div>
+            <Link to="/">
+                <button>Home</button>
+            </Link>
             <h1>ADD A BOOK</h1>
             <form onSubmit={submitForm}>
                 <label>Book Name: </label>

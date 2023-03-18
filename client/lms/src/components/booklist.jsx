@@ -1,5 +1,6 @@
 import axios from 'axios';
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 function Booklist(){
     const [booklist,setBooklist] = useState([]);
 
@@ -42,6 +43,9 @@ function Booklist(){
                     </tr>
                 ))}
             </table>
+            <Link to="/bookform">
+                <button>ADD BOOK</button>
+            </Link>
         </div>
     )
 }

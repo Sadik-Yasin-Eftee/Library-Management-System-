@@ -1,12 +1,16 @@
-import './App.css';
+import React from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import BookForm from './components/bookForm';
 import Booklist from './components/booklist';
+
 function App() {
   return (
-    <div className="App">
-      <BookForm />
-      <Booklist />
-    </div>
+    <Router>
+      <Routes>
+        <Route exact path="/" element={<Booklist/>} />
+        <Route path="/bookform" element={<BookForm/>} />
+      </Routes>
+    </Router>
   );
 }
 
