@@ -4,7 +4,8 @@ const booklist = require("../models/bookList.js")
 const createConnection = mysql.createConnection({
     host : "localhost",
     user : "root",
-    password : "1234"    
+    password : "1234" ,
+    database : "lms"   
 });
 
 const connection = createConnection.connect((error) => {
