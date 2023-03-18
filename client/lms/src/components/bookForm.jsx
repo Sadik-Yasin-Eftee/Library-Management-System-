@@ -15,7 +15,7 @@ function BookForm() {
             bookName : bookName,
             authorName : authorName,
             genre : genre
-        })
+        }).then(res => console.log(res)).catch(err => (err))       
     }
 
     return(

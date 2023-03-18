@@ -1,6 +1,6 @@
 const app = require("../index.js");
 const db = require("../database/database.js");
-const add = require("../models/addBook.js")
+const add = require("../models/addBook.js");
 
 const addBook = app.post("/addBooks",(req,res) => {
     var name = req.body.bookName;
