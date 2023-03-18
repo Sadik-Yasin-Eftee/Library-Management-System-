@@ -11,7 +11,8 @@ module.exports = app;
 
 const homePage = require("./controllers/homePage.js");
 const getBooks = require ("./controllers/getBooklist.js");
-const addBook = require("./controllers/addBooks.js")
+const addBook = require("./controllers/addBooks.js");
+const deleteBook = require("./controllers/deleteBook.js")
 
 app.listen(PORT, () => {
     console.log("Connected to port " + PORT);
