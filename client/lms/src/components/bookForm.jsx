@@ -6,16 +6,23 @@ function BookForm() {
     const [authorName,setAuthorName] = useState('');
     const [genre,setGenre] = useState('Fiction');
  
-    const submitForm = () => {
+    const submitForm = (event) => {
+        event.preventDefault(); // prevent the form from reloading the page
         console.log(bookName);
         console.log(authorName);
         console.log(genre);
         const url = "http://localhost:3001/addBooks";
         axios.post(url, {
-            bookName : bookName,
-            authorName : authorName,
-            genre : genre
-        }).then(res => console.log(res)).catch(err => (err))       
+            bookName: bookName,
+            authorName: authorName,
+            genre: genre
+        })
+        .then(response => {
+            console.log(response);
+        })
+        .catch(error => {
+            console.log(error);
+        });
     }
 
     return(
@@ -38,12 +45,9 @@ function BookForm() {
                 </select>
                 <br />
                 <br />
-                <button type="submit" onClick={submitForm}>Add</button>
+                <button type="submit">Add</button>
             </form>
         </div>
     )
 }
 export default BookForm;
-
-
-
