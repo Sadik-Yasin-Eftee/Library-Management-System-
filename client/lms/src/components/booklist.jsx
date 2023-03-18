@@ -16,9 +16,9 @@ function Booklist(){
     },[]);
     
     return(
-        <div>
+        <div >
             <h1>Book List</h1>
-            <table>
+            <table >
                 <tr>
                     <th>SL No.</th>
                     <th>Book Name</th>
@@ -26,22 +26,20 @@ function Booklist(){
                     <th>Genre</th>
                 </tr>
                 {booklist.map((book) => (
-                    <div key={book.id}>
-                        <tr>
-                            <td>
-                                {book.id}
-                            </td>
-                            <td>
-                                {book.name}
-                            </td>
-                            <td>
-                                {book.author}
-                            </td>
-                            <td>
-                                {book.genre}
-                            </td>
-                        </tr>
-                    </div>
+                    <tr key={book.id}>
+                        <td>
+                            {book.id}
+                        </td>
+                        <td>
+                            {book.name}
+                       </td>
+                        <td>
+                            {book.author}
+                        </td>
+                        <td>
+                            {book.genre}
+                        </td>
+                    </tr>
                 ))}
             </table>
         </div>
