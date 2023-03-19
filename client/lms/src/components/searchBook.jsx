@@ -6,11 +6,13 @@ function SeacrhBook(){
     const [searchParams, setSearchParams] = useState('');
 
     const handleSearch = () => {
-        // const url = `http://localhost:3001/booklist/search?params=${searchParams}`;
-        const url = "";
+        const url = `http://localhost:3001/searchBook?query=${searchParams}`;
+        // const url = "";
         axios.get(url).then((response) => {
             console.log(response.data);
             setBooklist(response.data);
+        }).catch((error) => {
+            console.log(error);
         })
     }
 
@@ -21,7 +23,7 @@ function SeacrhBook(){
     return(
         <div >
             <h1>Book List</h1>
-            <input type="text" value={searchParams}  onChange={(e) => setSearchParams(e.target.value)} placeholder="Search"/>
+            <input type="text" value={searchParams}  onChange={(e) => setSearchParams(e.target.value)} placeholder="Search"/>                       
             <table>
                 <thead>
                     <tr>

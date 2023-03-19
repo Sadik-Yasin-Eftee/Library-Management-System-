@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 function Booklist(){
     const [booklist,setBooklist] = useState([]);
+    const [searchParams, setSearchParams] = useState('');
 
     const GetBooklist = () =>{
         const url = "http://localhost:3001/booklist";
@@ -29,13 +30,24 @@ function Booklist(){
                 });
             }
     }
-    
+
+    const handleSearch = () => {
+        const url = `http://localhost:3001/searchBook?query=${searchParams}`;
+        axios.get(url).then((response) => {
+            console.log(response.data);
+            setBooklist(response.data);
+        }).catch((error) => {
+            console.log(error);
+        })
+    }
+
+    useEffect(() => {
+        handleSearch();
+    },[searchParams]);
     return(
         <div >           
             <h1>Book List</h1>
-            <Link to="/seachBook">
-                <button>Search</button>
-            </Link>
+            <input type="text" value={searchParams}  onChange={(e) => setSearchParams(e.target.value)} placeholder="Search"/> 
             <table >
                 <thead>
                     <tr>

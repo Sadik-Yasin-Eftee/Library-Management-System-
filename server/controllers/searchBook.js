@@ -18,3 +18,5 @@ const search = app.get('/searchBook', (req,res) => {
       }
    }); 
 });
+
+exports.module = search
