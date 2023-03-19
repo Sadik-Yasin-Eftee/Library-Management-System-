@@ -11,8 +11,7 @@ const search = app.get('/searchBook', (req,res) => {
    ];
    db.query(sql.searchBook, params, (err, results) => {
       if (err) {
-         console.log(err);
-         res.status(500).send('Internal Server Error');
+         console.log(err);         
       } else {
          res.status(200).json(results);
       }

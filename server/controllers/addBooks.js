@@ -12,7 +12,7 @@ const addBook = app.post("/addBooks",(req,res) => {
             return res.json(error)
         }
         console.log("Book added successfully");
-        res.redirect("/bookList")
+        res.redirect("/bookList");
     });
 });
 

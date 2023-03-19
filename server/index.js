@@ -14,6 +14,7 @@ const getBooks = require ("./controllers/getBooklist.js");
 const addBook = require("./controllers/addBooks.js");
 const deleteBook = require("./controllers/deleteBook.js");
 const searchBook = require("./controllers/searchBook.js");
+const updateBook = require("./controllers/updateBook.js");
 
 app.listen(PORT, () => {
     console.log("Connected to port " + PORT);
