@@ -1,11 +1,13 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
-function Booklist(){
-    const [booklist,setBooklist] = useState([]);
 
-    const GetBooklist = () =>{
-        const url = "http://localhost:3001/booklist";
+function SeacrhBook(){
+    const [booklist,setBooklist] = useState([]);
+    const [searchParams, setSearchParams] = useState('');
+
+    const handleSearch = () => {
+        // const url = `http://localhost:3001/booklist/search?params=${searchParams}`;
+        const url = "";
         axios.get(url).then((response) => {
             console.log(response.data);
             setBooklist(response.data);
@@ -13,30 +15,14 @@ function Booklist(){
     }
 
     useEffect(() => {
-        GetBooklist();
-    },[]);
+        handleSearch();
+    },[searchParams]);
 
-    const handleDelete = (id) => {
-        const url = `http://localhost:3001/booklist/${id}`;
-        const confirmationMessage = "Are you sure you want to delete this book?"
-        if (window.confirm(confirmationMessage)) {
-            axios.delete(url)
-                .then(() => {
-                    window.location.reload();
-                })
-                .catch((error) => {
-                    console.log(error);
-                });
-            }
-    }
-    
     return(
-        <div >           
+        <div >
             <h1>Book List</h1>
-            <Link to="/seachBook">
-                <button>Search</button>
-            </Link>
-            <table >
+            <input type="text" value={searchParams}  onChange={(e) => setSearchParams(e.target.value)} placeholder="Search"/>
+            <table>
                 <thead>
                     <tr>
                         <th>SL No.</th>
@@ -47,7 +33,7 @@ function Booklist(){
                 </thead>
                 {booklist.map((book) => (
                 <tbody key={book.id}>
-                    <tr >
+                    <tr>
                         <td>
                             {book.id}
                         </td>
@@ -60,17 +46,11 @@ function Booklist(){
                         <td>
                             {book.genre}
                         </td>
-                        <td>
-                            <button onClick={()=>handleDelete(book.id)}>Delete</button>
-                        </td>
                     </tr>
                 </tbody> 
                 ))}
             </table>
-            <Link to="/bookform">
-                <button>ADD BOOK</button>
-            </Link>
         </div>
     )
 }
-export default Booklist;
+export default SeacrhBook;
