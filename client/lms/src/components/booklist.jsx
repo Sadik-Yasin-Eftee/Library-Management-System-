@@ -73,6 +73,9 @@ function Booklist(){
                             {book.genre}
                         </td>
                         <td>
+                            <button>Update</button>
+                        </td>
+                        <td>
                             <button onClick={()=>handleDelete(book.id)}>Delete</button>
                         </td>
                     </tr>
