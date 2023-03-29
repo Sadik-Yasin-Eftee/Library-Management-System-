@@ -1,6 +1,5 @@
 const express = require("express");
 const cors = require('cors');
-const bodyParser = require("body-parser")
 const PORT = 3001;
 
 const app = express();
@@ -9,6 +8,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 module.exports = app;
 
+const register = require('./controllers/registration.js');
 const homePage = require("./controllers/homePage.js");
 const getBooks = require ("./controllers/getBooklist.js");
 const addBook = require("./controllers/addBooks.js");
