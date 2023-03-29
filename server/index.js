@@ -9,6 +9,7 @@ app.use(express.urlencoded({ extended: true }));
 module.exports = app;
 
 const register = require('./controllers/registration.js');
+const login = require('./controllers/login.js');
 const homePage = require("./controllers/homePage.js");
 const getBooks = require ("./controllers/getBooklist.js");
 const addBook = require("./controllers/addBooks.js");
