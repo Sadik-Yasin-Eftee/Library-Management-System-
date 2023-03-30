@@ -7,14 +7,21 @@ function Booklist(){
 
     const GetBooklist = () =>{
         const url = "http://localhost:3001/booklist";
-        axios.get(url).then((response) => {
+        axios.get(url,{
+            headers: {
+                Authorization: 'Bearer ${token}'
+            }
+        }).then((response) => {
             console.log(response.data);
             setBooklist(response.data);
         })
     }
 
     useEffect(() => {
-        GetBooklist();
+        const token = localStorage.getItem("token");
+        if (token){
+            GetBooklist();
+        }
     },[]);
 
     const handleDelete = (id) => {
