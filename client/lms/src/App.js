@@ -1,21 +1,34 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { BrowserRouter, Route, Routes, useNavigate } from 'react-router-dom';
 import BookForm from './components/bookForm';
 import Booklist from './components/booklist';
+import Login from './components/login';
 import Register from './components/register';
 import UpdateBook from './components/updateBook';
 
 function App() {
   return (
-    <Router>
+    <BrowserRouter>
       <Routes>
-        <Route exact path="/" element={<Booklist/>} />
-        <Route path="/bookform" element={<BookForm/>} />
+        <Route exact path="/" element={<ProtectedRoute component={Booklist} />} />
+        <Route path="/bookform" element={<ProtectedRoute component={BookForm} />} />
+        <Route path="/updateBook" element={<ProtectedRoute component={UpdateBook} />} />
         <Route path="/register" element={<Register/>} />
-        <Route path="/updateBook" element={<UpdateBook/>} />
+        <Route path="/login" element={<Login/>} />
       </Routes>
-    </Router>
+    </BrowserRouter>
   );
+}
+
+function ProtectedRoute({ component: Component, ...rest }) {
+  const navigate = useNavigate();
+  const isAuthenticated = localStorage.getItem('token'); // Check if JWT token is stored in local storage
+  if (isAuthenticated) {
+    return <Component {...rest} />;
+  } else {
+    navigate('/register', { state: { from: rest.location } });
+    return null;
+  }
 }
 
 export default App;

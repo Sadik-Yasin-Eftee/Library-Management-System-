@@ -32,9 +32,6 @@ function Register () {
     }
     return(
         <div>
-            <Link to='/'>
-                <button>Sign In</button>
-            </Link>
            <form onSubmit={handleForm}>
                 <label>Name: </label>
                 <input type="text" placeholder="Enter your name" value = {name} onChange={(e) => setName(e.target.value)}/>
@@ -54,6 +51,9 @@ function Register () {
                 <br />
                 <button type="submit">Submit</button>
             </form> 
+            <Link to='/'>
+                <button>Sign In</button>
+            </Link>
         </div>
     );
 }

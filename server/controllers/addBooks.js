@@ -1,8 +1,9 @@
 const app = require("../index.js");
 const db = require("../database/database.js");
 const add = require("../models/addBook.js");
+const authenticate = require("./middleware.js");
 
-const addBook = app.post("/addBooks",(req,res) => {
+const addBook = app.post("/addBooks", authenticate ,(req,res) => {
     var name = req.body.bookName;
     var author = req.body.authorName;
     var genre = req.body.genre;
